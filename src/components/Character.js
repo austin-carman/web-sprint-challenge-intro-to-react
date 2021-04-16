@@ -4,29 +4,42 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import CharacterInfo from './CharacterInfo'
 
+const StyledCard = styled.div `
+    width: 75%;
+    margin: 5% auto;
+    
+    .character-button{
+    display:flex;
+    justify-content: space-between;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    button {
+       padding: 0 3%;
+    }
+`
 
 const Character = ((props) => {
     const { character } = props
 
-    const [charUrl, setCharUrl] = useState(null)
+    const [view, setView] = useState(false)
 
-    const openProfile = id => {
-        setCharUrl(character.url)
+    const toggleButton = () => {
+        setView(!view)
     }
-
-    const closeProfile = id => {
-        setCharUrl(null)
-    }
-
 
     return(
-        <div>
-            <h2>{character.name}</h2>
-            <button onClick={()=>{openProfile()}}>View Profile</button>
-            <CharacterInfo character={character} charid={charUrl} close={closeProfile}/>
-        </div>
+        <StyledCard>
+            <div>
+                <h2>{character.name}</h2>
+                <button onClick={toggleButton}>View Profile</button>
+            </div>
+            <CharacterInfo character={character} viewButton={view} toggleButton={toggleButton}/>
+        </StyledCard>
     )
-
 });
 
 export default Character;

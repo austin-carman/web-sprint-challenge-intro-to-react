@@ -9,8 +9,8 @@ const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   const [charList, setCharList] = useState([]);
-  const [charUrl, setCharUrl] = useState(null);
-  let api = 'https://swapi.dev/api/people/'
+  // const [charUrl, setCharUrl] = useState(null);
+
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
@@ -25,9 +25,8 @@ const App = () => {
   
   useEffect(() => {
     axios
-      .get(api)
+      .get('https://swapi.dev/api/people/')
       .then((res) => {
-        console.log('watch', res.data);
         setCharList(res.data) //array of objects
         })
       .catch((err) => {
