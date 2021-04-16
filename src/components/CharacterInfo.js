@@ -2,16 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-
+const StyledDiv = styled.div `
+    h3 {
+        font-size: 1.8rem;
+    }
+    p{
+        font-size: 1.5rem;
+    }
+`
 
 const CharacterInfo = props => {
-    const { character, viewButton} = props
+    const { character, viewButton} = props;
 
     return(
-        <div>
+        <StyledDiv>
             {viewButton ? 
                 <>
-                    <h2>Profile:</h2>
+                    <h3>Profile:</h3>
                     <p>Gender: {character.gender}</p>
                     <p>Eye Color: {character.eye_color}</p>
                     <p>Hair Color: {character.hair_color}</p>
@@ -19,9 +26,8 @@ const CharacterInfo = props => {
                     <p>Weigth: {character.mass}kg</p>
                 </>
             : <div></div>}
-        </div>
-  
-    )
+        </StyledDiv>
+    );
 }
 
 export default CharacterInfo;
